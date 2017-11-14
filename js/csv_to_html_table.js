@@ -30,6 +30,9 @@ CsvToHtmlTable = {
           for (row_id = 1; row_id < csv_data.length; row_id++) { 
             var row_html = "<tr>";
 
+            // assuming the column with your image is in position 2
+            csv_data[row_id][1] = renderImage(csv_data[row_id][1]);
+
             //takes in an array of column index and function pairs
             if (custom_formatting != []) {
               $.each(custom_formatting, function(i, v){
@@ -39,12 +42,18 @@ CsvToHtmlTable = {
               })
             }
 
+          
+
             for (col_id = 0; col_id < csv_data[row_id].length; col_id++) { 
               row_html += "<td>" + csv_data[row_id][col_id] + "</td>";
             }
               
             row_html += "</tr>";
             $('#' + el + '-table tbody').append(row_html);
+          }
+
+          function renderImage(inputText) {
+             return '<img src="' + inputText + '" />';
           }
 
           $('#' + el + '-table').DataTable(datatables_options);
