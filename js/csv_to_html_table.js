@@ -53,7 +53,7 @@ CsvToHtmlTable = {
           }
 
           function renderImage(inputText) {
-             return '<img src="' + inputText + '" />';
+             return '<img src="' + inputText + '" height=100px width=100px/>';
           }
 
           $('#' + el + '-table').DataTable(datatables_options);
